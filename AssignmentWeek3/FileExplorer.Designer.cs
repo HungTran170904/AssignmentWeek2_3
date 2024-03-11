@@ -30,8 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileExplorerForm));
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "Item 1" }, 0, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold));
-            ListViewItem listViewItem2 = new ListViewItem("Item 2", 1);
             tableLayoutPanel = new TableLayoutPanel();
             treeView = new TreeView();
             SmallIcons = new ImageList(components);
@@ -41,12 +39,12 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             undoButton = new Button();
             redoButton = new Button();
-            listView = new ListView();
             LargeIcons = new ImageList(components);
             contextMenuStrip = new ContextMenuStrip(components);
             copyMenuItem = new ToolStripMenuItem();
             pasteMenuItem = new ToolStripMenuItem();
             deleteMenuItem = new ToolStripMenuItem();
+            listView = new ListView();
             tableLayoutPanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -158,20 +156,6 @@
             redoButton.Text = ">>";
             redoButton.UseVisualStyleBackColor = true;
             // 
-            // listView
-            // 
-            listView.Dock = DockStyle.Fill;
-            listViewItem2.Tag = "Hello";
-            listView.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
-            listView.LargeImageList = LargeIcons;
-            listView.Location = new Point(227, 48);
-            listView.Name = "listView";
-            listView.Size = new Size(890, 532);
-            listView.TabIndex = 7;
-            listView.UseCompatibleStateImageBehavior = false;
-            listView.MouseDoubleClick += listView_MouseDoubleClick;
-            listView.MouseDown += listView_MouseDown;
-            // 
             // LargeIcons
             // 
             LargeIcons.ColorDepth = ColorDepth.Depth32Bit;
@@ -211,6 +195,18 @@
             deleteMenuItem.Text = "Delete";
             deleteMenuItem.Click += deleteMenuItem_Click;
             // 
+            // listView
+            // 
+            listView.Dock = DockStyle.Fill;
+            listView.LargeImageList = LargeIcons;
+            listView.Location = new Point(227, 48);
+            listView.Name = "listView";
+            listView.Size = new Size(890, 532);
+            listView.TabIndex = 7;
+            listView.UseCompatibleStateImageBehavior = false;
+            listView.MouseDoubleClick += listView_MouseDoubleClick;
+            listView.MouseDown += listView_MouseDown;
+            // 
             // FileExplorerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -238,12 +234,12 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private Button undoButton;
         private Button redoButton;
-        private ListView listView;
         private ImageList LargeIcons;
         private ImageList SmallIcons;
         private ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem copyMenuItem;
         private ToolStripMenuItem pasteMenuItem;
         private ToolStripMenuItem deleteMenuItem;
+        private ListView listView;
     }
 }
