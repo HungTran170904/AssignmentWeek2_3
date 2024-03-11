@@ -116,7 +116,6 @@ namespace SimpleFileExplorer
                         ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, 1);
                         item.Tag = filePath;
                         listView.Items.Add(item);
-
                     }
                 }
             }
