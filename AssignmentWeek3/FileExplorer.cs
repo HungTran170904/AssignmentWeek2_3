@@ -103,9 +103,20 @@ namespace SimpleFileExplorer
                 string[] filePaths = Directory.GetFiles(path);
                 foreach (string filePath in filePaths)
                 {
-                    ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, 1);
-                    item.Tag = filePath;
-                    listView.Items.Add(item);
+                    List<string> imgextensions = new List<string> { ".jpg", ".png", ".jpeg" };
+                    if (imgextensions.Contains(Path.GetExtension(filePath)))
+                    {
+                        LargeIcons.Images.Add(Image.FromFile(filePath));
+                        ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, LargeIcons.Images.Count - 1);
+                        item.Tag = filePath;
+                        listView.Items.Add(item);
+                    }
+                    else
+                    {
+                        ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, 1);
+                        item.Tag = filePath;
+                        listView.Items.Add(item);
+                    }
                 }
             }
             catch (Exception)
