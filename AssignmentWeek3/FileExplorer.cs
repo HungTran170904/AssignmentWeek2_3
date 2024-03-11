@@ -16,7 +16,7 @@ namespace SimpleFileExplorer
             {
                 TreeNode root = new TreeNode() { Tag = rootPath, Text = "D:" };
                 treeView.Nodes.Add(root);
-                loadDirectories(root,2);
+                loadDirectories(root, 2);
             }
         }
 
@@ -24,7 +24,7 @@ namespace SimpleFileExplorer
         {
             try
             {
-                if(treeNode.Nodes.Count == 0)
+                if (treeNode.Nodes.Count == 0)
                 {
                     string[] dirPaths = Directory.GetDirectories(treeNode.Tag.ToString());
                     foreach (string dirPath in dirPaths)
@@ -36,7 +36,7 @@ namespace SimpleFileExplorer
                 limit--;
                 if (limit > 0)
                 {
-                    foreach(TreeNode subTreeNode in treeNode.Nodes)
+                    foreach (TreeNode subTreeNode in treeNode.Nodes)
                     {
                         loadDirectories(subTreeNode, limit);
                     }
@@ -66,14 +66,14 @@ namespace SimpleFileExplorer
         private async Task<bool> copyFolderAsync(string sourcePath, string destPath)
         {
             Directory.CreateDirectory(destPath);
-            foreach(string sourceFilePath in Directory.GetFiles(sourcePath))
+            foreach (string sourceFilePath in Directory.GetFiles(sourcePath))
             {
-                string fileName=Path.GetFileName(sourceFilePath);
-                await copyFileAsync(sourceFilePath,Path.Combine(destPath,fileName));
+                string fileName = Path.GetFileName(sourceFilePath);
+                await copyFileAsync(sourceFilePath, Path.Combine(destPath, fileName));
             }
-            foreach(string sourceDirPath in Directory.GetDirectories(sourcePath))
+            foreach (string sourceDirPath in Directory.GetDirectories(sourcePath))
             {
-                string dirName=Path.GetFileName(sourceDirPath);
+                string dirName = Path.GetFileName(sourceDirPath);
                 await copyFolderAsync(sourceDirPath, Path.Combine(destPath, dirName));
             }
             return true;
@@ -103,9 +103,20 @@ namespace SimpleFileExplorer
                 string[] filePaths = Directory.GetFiles(path);
                 foreach (string filePath in filePaths)
                 {
-                    ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, 1);
-                    item.Tag = filePath;
-                    listView.Items.Add(item);
+                    List<string> imgextensions = new List<string> { ".jpg", ".png", ".jpeg" };
+                    if (imgextensions.Contains(Path.GetExtension(filePath)))
+                    {
+                        LargeIcons.Images.Add(Image.FromFile(filePath));
+                        ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, LargeIcons.Images.Count - 1);
+                        item.Tag = filePath;
+                        listView.Items.Add(item);
+                    }
+                    else
+                    {
+                        ListViewItem item = new ListViewItem(new string[] { Path.GetFileName(filePath) }, 1);
+                        item.Tag = filePath;
+                        listView.Items.Add(item);
+                    }
                 }
             }
             catch (Exception)
@@ -185,13 +196,13 @@ namespace SimpleFileExplorer
                     FileAttributes attributes = File.GetAttributes(copiedPath);
                     if ((attributes & FileAttributes.Directory) == FileAttributes.Directory)
                     {
-                        string dirName=Path.GetFileName(copiedPath);
+                        string dirName = Path.GetFileName(copiedPath);
                         string destPath = Path.Combine(destDirectory, dirName);
                         int i = 1;
                         while (Directory.Exists(destPath + i)) i++;
                         destPath += i;
-                        await copyFolderAsync(copiedPath,destPath);
-                        
+                        await copyFolderAsync(copiedPath, destPath);
+
                     }
                     else
                     {
@@ -233,7 +244,7 @@ namespace SimpleFileExplorer
                 FileAttributes attributes = File.GetAttributes(path);
                 if ((attributes & FileAttributes.Directory) == FileAttributes.Directory)
                 {
-                    await Task.Run(()=>Directory.Delete(path, recursive: true));
+                    await Task.Run(() => Directory.Delete(path, recursive: true));
                 }
                 else
                 {
@@ -241,21 +252,27 @@ namespace SimpleFileExplorer
                 }
                 if (listViewPath.Equals(listView.Tag.ToString()))
                 {
-                    ListViewItem deletedItem=null;
-                    foreach(ListViewItem item in listView.Items){
+                    ListViewItem deletedItem = null;
+                    foreach (ListViewItem item in listView.Items)
+                    {
                         if (item.Tag.ToString().Equals(path))
                         {
-                            deletedItem= item;
+                            deletedItem = item;
                             break;
                         }
                     }
-                    if(deletedItem != null) listView.Items.Remove(deletedItem);
+                    if (deletedItem != null) listView.Items.Remove(deletedItem);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error deleting file: {ex.Message}");
             }
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -39,12 +39,12 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             undoButton = new Button();
             redoButton = new Button();
+            listView = new ListView();
             LargeIcons = new ImageList(components);
             contextMenuStrip = new ContextMenuStrip(components);
             copyMenuItem = new ToolStripMenuItem();
             pasteMenuItem = new ToolStripMenuItem();
             deleteMenuItem = new ToolStripMenuItem();
-            listView = new ListView();
             tableLayoutPanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -156,6 +156,19 @@
             redoButton.Text = ">>";
             redoButton.UseVisualStyleBackColor = true;
             // 
+            // listView
+            // 
+            listView.Dock = DockStyle.Fill;
+            listView.LargeImageList = LargeIcons;
+            listView.Location = new Point(227, 48);
+            listView.Name = "listView";
+            listView.Size = new Size(890, 532);
+            listView.TabIndex = 7;
+            listView.UseCompatibleStateImageBehavior = false;
+            listView.SelectedIndexChanged += listView_SelectedIndexChanged;
+            listView.MouseDoubleClick += listView_MouseDoubleClick;
+            listView.MouseDown += listView_MouseDown;
+            // 
             // LargeIcons
             // 
             LargeIcons.ColorDepth = ColorDepth.Depth32Bit;
@@ -194,18 +207,6 @@
             deleteMenuItem.Size = new Size(131, 28);
             deleteMenuItem.Text = "Delete";
             deleteMenuItem.Click += deleteMenuItem_Click;
-            // 
-            // listView
-            // 
-            listView.Dock = DockStyle.Fill;
-            listView.LargeImageList = LargeIcons;
-            listView.Location = new Point(227, 48);
-            listView.Name = "listView";
-            listView.Size = new Size(890, 532);
-            listView.TabIndex = 7;
-            listView.UseCompatibleStateImageBehavior = false;
-            listView.MouseDoubleClick += listView_MouseDoubleClick;
-            listView.MouseDown += listView_MouseDown;
             // 
             // FileExplorerForm
             // 
