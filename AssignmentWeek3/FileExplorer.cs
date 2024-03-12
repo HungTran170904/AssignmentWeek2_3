@@ -1,3 +1,5 @@
+using AssigmentWeek3;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -148,8 +150,17 @@ namespace SimpleFileExplorer
                     }
                     else
                     {
-                        MessageBox.Show("The path refers to a file.");
-                    }
+                        List<string> imgextensions = new List<string> { ".jpg", ".png", ".jpeg" };
+                        if (!imgextensions.Contains(Path.GetExtension(path)))
+                        {
+                            MessageBox.Show("this path prefer to a file");
+                        }
+                        else
+                        {
+                            displayImg dis = new displayImg(path);
+                            dis.ShowDialog();
+                        }
+                    }              
                 }
             }
             catch (Exception)
