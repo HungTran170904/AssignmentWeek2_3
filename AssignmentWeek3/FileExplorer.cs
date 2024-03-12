@@ -159,6 +159,7 @@ namespace SimpleFileExplorer
                         {
                             displayImg dis = new displayImg(path);
                             dis.ShowDialog();
+
                         }
                     }              
                 }
