@@ -31,7 +31,9 @@
             this.txtsend = new System.Windows.Forms.TextBox();
             this.btnsend = new System.Windows.Forms.Button();
             this.txtChat = new System.Windows.Forms.RichTextBox();
-            this.listviewonline = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtsend
@@ -54,22 +56,34 @@
             // 
             // txtChat
             // 
-            this.txtChat.Location = new System.Drawing.Point(29, 88);
+            this.txtChat.Location = new System.Drawing.Point(29, 124);
             this.txtChat.Name = "txtChat";
-            this.txtChat.Size = new System.Drawing.Size(690, 440);
+            this.txtChat.Size = new System.Drawing.Size(951, 404);
             this.txtChat.TabIndex = 3;
             this.txtChat.Text = "";
             this.txtChat.TextChanged += new System.EventHandler(this.txtChat_TextChanged);
             // 
-            // listviewonline
+            // label1
             // 
-            this.listviewonline.HideSelection = false;
-            this.listviewonline.Location = new System.Drawing.Point(769, 88);
-            this.listviewonline.Name = "listviewonline";
-            this.listviewonline.Size = new System.Drawing.Size(264, 440);
-            this.listviewonline.TabIndex = 4;
-            this.listviewonline.UseCompatibleStateImageBehavior = false;
-            this.listviewonline.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(349, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(311, 40);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "UIT CHAT FORM";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::roomchat.Properties.Resources.dhuit;
+            this.pictureBox1.Location = new System.Drawing.Point(29, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(204, 110);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // gui
             // 
@@ -77,7 +91,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(1068, 705);
-            this.Controls.Add(this.listviewonline);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtChat);
             this.Controls.Add(this.btnsend);
             this.Controls.Add(this.txtsend);
@@ -86,6 +101,7 @@
             this.Text = "gui";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.gui_FormClosing);
             this.Click += new System.EventHandler(this.HandleServerMessage);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,6 +111,7 @@
         private System.Windows.Forms.TextBox txtsend;
         private System.Windows.Forms.Button btnsend;
         private System.Windows.Forms.RichTextBox txtChat;
-        private System.Windows.Forms.ListView listviewonline;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -60,7 +60,7 @@ namespace roomchat
                 byte[] buffer = new byte[1024];
                 int bytesRead;
 
-                try
+                
                 {
                     while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
                     {
@@ -68,10 +68,7 @@ namespace roomchat
                         AddMessageToChat(message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi nhận tin nhắn từ máy chủ: " + ex.Message);
-                }
+               
             });
 
             receiveThread.Start();
