@@ -24,7 +24,7 @@ namespace roomchat
         static List<TcpClient> clients = new List<TcpClient>();
         private ServerConnection serverConnection;
         private string senderName;
-        private List<string> onlineUsers = new List<string>();
+        private List<int> room = new List<int>();
         private Thread listenThread;
         public class ChatRoom
         {
@@ -97,22 +97,26 @@ namespace roomchat
            
             try
             {
-                ChatRoom newRoom = new ChatRoom(roomname, serverPort);
-                Sever chatForm = new Sever(newRoom, txtname.Text); // Pass txtname.Text as the sender's name
-                TcpClient client = new TcpClient("127.0.0.1", serverPort); // Thay đổi địa chỉ IP nếu cần
-                NetworkStream stream = client.GetStream();
+                if (!room.Contains(serverPort))
+                {
 
-                // Gửi yêu cầu tham gia phòng chat
-             
+                    ChatRoom newRoom = new ChatRoom(roomname, serverPort);
+                    Sever chatForm = new Sever(newRoom, txtname.Text); // Pass txtname.Text as the sender's name
+                    TcpClient client = new TcpClient("127.0.0.1", serverPort); // Thay đổi địa chỉ IP nếu cần
+                    NetworkStream stream = client.GetStream();
 
-                // Mở giao diện phòng chat
-                ChatRoom NewRoom = new ChatRoom(roomname, serverPort);
-                
-                Sever sever = new Sever(NewRoom, txtname.Text);
-                sever.Show();
-                gui ChatForm = new gui(NewRoom, txtname.Text); // Pass txtname.Text as the sender's name
-                ChatForm.Show();
-                
+                    // Gửi yêu cầu tham gia phòng chat
+
+
+                    // Mở giao diện phòng chat
+                    ChatRoom NewRoom = new ChatRoom(roomname, serverPort);
+
+                    Sever sever = new Sever(NewRoom, txtname.Text);
+                    ;
+                    gui ChatForm = new gui(NewRoom, txtname.Text); // Pass txtname.Text as the sender's name
+                    ChatForm.Show();
+                    room.Add(serverPort);
+                }
             }
             catch (Exception ex)
             {
@@ -150,19 +154,19 @@ namespace roomchat
             try
             {
 
-                server.Start();
                 while (true)
                 {
+                    server.Start();
+
                     TcpClient client = server.AcceptTcpClient();
                     clients.Add(client);
                     Thread clientThread = new Thread(() => HandleClient(client));
                     clientThread.Start();
-                    server.Start();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi mở phòng chat: " + ex.Message);
+                MessageBox.Show("Vui lòng chọn ROOMCODE khác");
             }
            
 
@@ -175,6 +179,19 @@ namespace roomchat
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void txtroomcode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtroomcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

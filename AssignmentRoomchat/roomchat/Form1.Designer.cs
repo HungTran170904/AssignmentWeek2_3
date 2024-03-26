@@ -51,7 +51,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(23, 89);
+            this.label2.Location = new System.Drawing.Point(12, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(169, 51);
             this.label2.TabIndex = 1;
@@ -59,48 +59,54 @@
             // 
             // txtname
             // 
-            this.txtname.Location = new System.Drawing.Point(226, 89);
+            this.txtname.Location = new System.Drawing.Point(257, 89);
             this.txtname.Multiline = true;
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(281, 41);
+            this.txtname.Size = new System.Drawing.Size(324, 41);
             this.txtname.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(23, 185);
+            this.label3.Location = new System.Drawing.Point(12, 185);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(189, 51);
+            this.label3.Size = new System.Drawing.Size(239, 51);
             this.label3.TabIndex = 3;
-            this.label3.Text = "RoomCode";
+            this.label3.Text = "RoomNumber";
             // 
             // txtroomcode
             // 
-            this.txtroomcode.Location = new System.Drawing.Point(226, 185);
+            this.txtroomcode.Location = new System.Drawing.Point(257, 195);
             this.txtroomcode.Multiline = true;
             this.txtroomcode.Name = "txtroomcode";
-            this.txtroomcode.Size = new System.Drawing.Size(281, 41);
+            this.txtroomcode.Size = new System.Drawing.Size(324, 41);
             this.txtroomcode.TabIndex = 4;
+            this.txtroomcode.TextChanged += new System.EventHandler(this.txtroomcode_TextChanged);
+            this.txtroomcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtroomcode_KeyPress);
             // 
             // btncreate
             // 
-            this.btncreate.Location = new System.Drawing.Point(282, 284);
+            this.btncreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btncreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncreate.Location = new System.Drawing.Point(460, 284);
             this.btncreate.Name = "btncreate";
             this.btncreate.Size = new System.Drawing.Size(156, 86);
             this.btncreate.TabIndex = 5;
             this.btncreate.Text = "Create Room";
-            this.btncreate.UseVisualStyleBackColor = true;
+            this.btncreate.UseVisualStyleBackColor = false;
             this.btncreate.Click += new System.EventHandler(this.btncreate_Click);
             // 
             // btnjoin
             // 
-            this.btnjoin.Location = new System.Drawing.Point(569, 115);
+            this.btnjoin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnjoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnjoin.Location = new System.Drawing.Point(100, 284);
             this.btnjoin.Name = "btnjoin";
-            this.btnjoin.Size = new System.Drawing.Size(151, 65);
+            this.btnjoin.Size = new System.Drawing.Size(165, 86);
             this.btnjoin.TabIndex = 6;
             this.btnjoin.Text = "Join Room";
-            this.btnjoin.UseVisualStyleBackColor = true;
+            this.btnjoin.UseVisualStyleBackColor = false;
             this.btnjoin.Click += new System.EventHandler(this.btnjoin_Click);
             // 
             // Form1
