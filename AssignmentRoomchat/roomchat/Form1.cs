@@ -114,7 +114,7 @@ namespace roomchat
                     Sever sever = new Sever(NewRoom, txtname.Text);
                     ;
                     gui ChatForm = new gui(NewRoom, txtname.Text); // Pass txtname.Text as the sender's name
-                    Search
+                    
                     ChatForm.Show();
                     room.Add(serverPort);
                 }
