@@ -94,7 +94,7 @@ namespace roomchat
             server = new TcpListener(IPAddress.Any, serverPort);
             listenThread = new Thread(ListenForClients);
             listenThread.Start();
-           
+
             try
             {
                 if (!room.Contains(serverPort))
@@ -114,6 +114,7 @@ namespace roomchat
                     Sever sever = new Sever(NewRoom, txtname.Text);
                     ;
                     gui ChatForm = new gui(NewRoom, txtname.Text); // Pass txtname.Text as the sender's name
+                    Search
                     ChatForm.Show();
                     room.Add(serverPort);
                 }
@@ -126,8 +127,8 @@ namespace roomchat
         }
         private void btnjoin_Click(object sender, EventArgs e)
         {
-           
-            string roomName = ""; 
+
+            string roomName = "";
             int serverip = Int32.Parse(txtroomcode.Text); // Cổng của phòng chat được chọn
 
             // Thực hiện kết nối đến phòng chat
@@ -137,7 +138,7 @@ namespace roomchat
                 NetworkStream stream = client.GetStream();
 
                 // Gửi yêu cầu tham gia phòng chat
-             
+
 
                 // Mở giao diện phòng chat
                 ChatRoom newRoom = new ChatRoom(roomName, serverip);
@@ -168,13 +169,13 @@ namespace roomchat
             {
                 MessageBox.Show("Vui lòng chọn ROOMCODE khác");
             }
-           
 
-            
+
+
         }
 
 
-       
+
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {

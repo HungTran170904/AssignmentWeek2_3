@@ -21,7 +21,7 @@ namespace roomchat
         private NetworkStream stream;
         private Thread receiveThread;
         private string senderName;
-        
+
         private List<string> onlineUsers = new List<string>(); // Danh sách người dùng đang online
         public gui()
         {
@@ -44,7 +44,7 @@ namespace roomchat
                 stream = client.GetStream();
                 StartReceiving();
                 string connect = $"JOIN|{senderName}";
-                SendMessageToServer("",connect);
+                SendMessageToServer("", connect);
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace roomchat
         {
             string message = txtsend.Text;
             string fullMessage = $"{senderName}: {message}"; // Combining sender's name and message
-           SendMessageToServer(senderName, message);
+            SendMessageToServer(senderName, message);
             AddMessageToChat(fullMessage); // Add the message to the chat box
             txtsend.Clear(); // Clear the send message box
         }
@@ -124,7 +124,7 @@ namespace roomchat
             }
         }
 
-        
+
 
         private void gui_FormClosing(object sender, FormClosingEventArgs e)
         {

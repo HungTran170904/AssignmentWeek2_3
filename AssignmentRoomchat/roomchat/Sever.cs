@@ -21,7 +21,7 @@ namespace roomchat
         private TcpClient client;
         private NetworkStream stream;
         private Thread receiveThread;
-       
+
         private string senderName;
         private List<TcpClient> clients;
 
@@ -31,14 +31,14 @@ namespace roomchat
             currentRoom = room;
             senderName = name; // Save the sender's name
             ConnectToServer();
-            
+
 
         }
 
 
         public Sever()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
         private void ConnectToServer()
         {
@@ -60,7 +60,7 @@ namespace roomchat
                 byte[] buffer = new byte[1024];
                 int bytesRead;
 
-                
+
                 {
                     while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
                     {
@@ -68,12 +68,12 @@ namespace roomchat
                         AddMessageToChat(message);
                     }
                 }
-               
+
             });
 
             receiveThread.Start();
         }
-    
+
         private void AddMessageToChat(string message)
         {
             // Use Invoke to marshal the call to the UI thread
@@ -98,11 +98,11 @@ namespace roomchat
         {
 
         }
-       
-      
+
+
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-         //  richTextBox1.AppendText($"JOIN|{senderName}");
+            //  richTextBox1.AppendText($"JOIN|{senderName}");
         }
         public void xuly()
         {
