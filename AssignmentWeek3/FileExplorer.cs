@@ -13,10 +13,10 @@ namespace SimpleFileExplorer
         public FileExplorerForm()
         {
             InitializeComponent();
-            string rootPath = @"D:\";
+            string rootPath = @"C:\";
             if (Directory.Exists(rootPath))
             {
-                TreeNode root = new TreeNode() { Tag = rootPath, Text = "D:" };
+                TreeNode root = new TreeNode() { Tag = rootPath, Text = "C:" };
                 treeView.Nodes.Add(root);
                 loadDirectories(root, 2);
             }
